@@ -13,7 +13,7 @@ const Home = () => {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/experiences"
+          `${import.meta.env.VITE_API_URL}/api/experiences`
         );
 
         setExperiences(response.data.data);
@@ -28,7 +28,7 @@ const Home = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/experiences/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/experiences/${id}`);
     setExperiences(experiences.filter((exp) => exp._id !== id));
   }
 

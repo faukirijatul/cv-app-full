@@ -32,7 +32,7 @@ const ExperienceForm = () => {
         setIsLoading(true);
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/experiences/${id}`
+            `${import.meta.env.VITE_API_URL}/api/experiences/${id}`
           );
 
           description.setValue(response.data.data.description);
@@ -65,8 +65,8 @@ const ExperienceForm = () => {
     };
 
     const request = isEdit
-      ? axios.put(`http://localhost:5000/api/experiences/${id}`, payload)
-      : axios.post("http://localhost:5000/api/experiences", payload);
+      ? axios.put(`${import.meta.env.VITE_API_URL}/api/experiences/${id}`, payload)
+      : axios.post(`${import.meta.env.VITE_API_URL}/api/experiences`, payload);
 
     request
       .then(() => navigate("/"))
